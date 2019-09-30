@@ -1,0 +1,24 @@
+(print "Name: Kin Lou     Emplid: 23339070")
+(print "This small program will determine a whether a list is a palindrome by comparing a new list of the same elements in backwards order.")
+(define a (list 1 2 3 2 1)) ; Palindrome List
+(define z (list 1 2 3 4 5)) ; Non-Palindrome List
+
+(print "First List:")
+(print a)
+(print "Second List:")
+(print z)
+
+; This recursive function receives a list as it's only input. It returns a new list in backwards order.
+(define (reverse alist)
+    (if (null? alist)
+        alist
+        (append (reverse (cdr alist)) (list (car alist))))) ; Function will call itself repeatedly until the list runs out of elements due to "cdr". It will append elements to a list starting from the back of the original list until it reaches the first element. "car" will take care of adding the first element to the back of the new list.
+
+
+(define b (reverse a))
+(define y (reverse z))
+
+(print "Is the first list a palindrome?")
+(print (equal? a b))
+(print "Is the second list a palindrome?")
+(print (equal? z y))
