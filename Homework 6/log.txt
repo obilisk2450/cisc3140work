@@ -1,0 +1,101 @@
+Microsoft Windows [Version 10.0.17134.1069]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Users\akatsuki1423>cd sqlite
+
+C:\Users\akatsuki1423\sqlite>sqlite3 hello.db
+SQLite version 3.30.1 2019-10-10 20:19:45
+Enter ".help" for usage hints.
+sqlite> create table feedback (well_organized integer, speaking_skills integer, enthusiasm integer, learned_new integer);
+sqlite> .mode csv feedback
+sqlite> .import 9070.csv feedback
+sqlite> select *  from feedback;
+5,4,2,3
+5,5,5,5
+4,3,5,5
+5,5,5,5
+5,5,5,5
+5,5,5,5
+5,5,5,5
+4,4,5,4
+5,5,5,5
+5,5,5,5
+5,5,5,5
+4,3,3,3
+4,4,4,4
+4,3,5,4
+4,5,5,4
+5,5,5,5
+sqlite> .mode column
+sqlite> .headers on
+sqlite> select * from feedback;
+well_organized  speaking_skills  enthusiasm  learned_new
+--------------  ---------------  ----------  -----------
+5               4                2           3
+5               5                5           5
+4               3                5           5
+5               5                5           5
+5               5                5           5
+5               5                5           5
+5               5                5           5
+4               4                5           4
+5               5                5           5
+5               5                5           5
+5               5                5           5
+4               3                3           3
+4               4                4           4
+4               3                5           4
+4               5                5           4
+5               5                5           5
+sqlite> select AVG(well_organized) from feedback;
+AVG(well_organized)
+-------------------
+4.625
+sqlite> select MIN(well_organized) from feedback;
+MIN(well_organized)
+-------------------
+4
+sqlite> select MAX(well_organized) from feedback;
+MAX(well_organized)
+-------------------
+5
+sqlite> select AVG(speaking_skills integer) from feedback;
+Error: near "integer": syntax error
+sqlite> select AVG(speaking_skills) from feedback;
+AVG(speaking_skills)
+--------------------
+4.4375
+sqlite> select MIN(speaking_skills) from feedback;
+MIN(speaking_skills)
+--------------------
+3
+sqlite> select MAX(speaking_skills) from feedback;
+MAX(speaking_skills)
+--------------------
+5
+sqlite> select AVG(enthusiasm) from feedback;
+AVG(enthusiasm)
+---------------
+4.625
+sqlite>
+sqlite> select MIN(enthusiasm) from feedback;
+MIN(enthusiasm)
+---------------
+2
+sqlite> select MAX(enthusiasm) from feedback;
+MAX(enthusiasm)
+---------------
+5
+sqlite> select AVG(learned_new) from feedback;
+AVG(learned_new)
+----------------
+4.5
+sqlite> select MIN(learned_new) from feedback;
+MIN(learned_new)
+----------------
+3
+sqlite> select MAX(learned_new) from feedback;
+MAX(learned_new)
+----------------
+5
+sqlite> .exit
